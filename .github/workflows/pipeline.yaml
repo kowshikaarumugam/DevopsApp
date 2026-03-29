@@ -15,8 +15,8 @@ jobs:
           echo "${{ secrets.secret_1 }}" > key.pem
           chmod 400 key.pem
       - name: cp app.py
-        run: scp -o StrictHostKeyChecking=no -i key.pem app.py ec2-user@3.110.107.184:/home/ec2-user/
+        run: scp -o StrictHostKeyChecking=no -i key.pem app.py ec2-user@13.127.188.216:/home/ec2-user/
       - name: cp req.txt
-        run: scp -o StrictHostKeyChecking=no -i key.pem requirements.txt ec2-user@3.110.107.184:/home/ec2-user/
+        run: scp -o StrictHostKeyChecking=no -i key.pem requirements.txt ec2-user@13.127.188.216:/home/ec2-user/
       - name: run app
-        run: ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@3.110.107.184 "cd /home/ec2-user && python3 -m venv app && source app/bin/activate && pip3 install -r requirements.txt && python3 app.py"
+        run: ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@13.127.188.216 "cd /home/ec2-user && python3 -m venv app && source app/bin/activate && pip3 install -r requirements.txt && python3 app.py"
